@@ -1,30 +1,37 @@
 Select*
 From PorfolioProject.dbo.NashvilleHousing
 
+	
 --change date formate 
 
 Alter table NashvilleHousing
 Add SalesDateConverted Date 
 
+	
 update NashvilleHousing
 Set SalesDateConverted = Convert (Date,SaleDate)
 
+	
 Select SalesDateConverted 
 From PorfolioProject.Dbo.NashvilleHousing
 
+	
 --
 
+	
 Select *
 From PorfolioProject.Dbo.NashvilleHousing
 Where PropertyAddress is null 
 Order by ParcelID
 
+	
 Select *
 From PorfolioProject.Dbo.NashvilleHousing
 --Where PropertyAddress is null 
 Order by ParcelID
  -- found that same Id is having same address 
 
+	
  Select a.ParcelID, a.PropertyAddress, b.ParcelID, B.PropertyAddress , ISNULL(a.PropertyAddress ,B.PropertyAddress )
 From PorfolioProject.Dbo.NashvilleHousing a
 Join PorfolioProject.Dbo.NashvilleHousing b
@@ -33,6 +40,7 @@ Join PorfolioProject.Dbo.NashvilleHousing b
 where a.PropertyAddress is Null
 -- Populate the null values with the other values 
 
+	
 update a
 set PropertyAddress = ISNULL(a.PropertyAddress ,B.PropertyAddress )
 From PorfolioProject.Dbo.NashvilleHousing a
