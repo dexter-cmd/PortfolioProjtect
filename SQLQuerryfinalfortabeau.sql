@@ -9,6 +9,7 @@ where continent is not null
 order by 1,2
 
 
+  
 -- numbers are extremely close so we will keep them - The Second includes "International"  Location
 
 
@@ -25,6 +26,7 @@ order by 1,2
 
 -- European Union is part of Europe
 
+  
 Select location, SUM(cast(new_deaths as int)) as TotalDeathCount
 From PorfolioProject..CovidDeaths
 --Where location like '%poland%'
@@ -34,17 +36,21 @@ Group by location
 order by TotalDeathCount desc
 
 
+  
 -- 3.
 
+  
 Select Location, Population, MAX(total_cases) as HighestInfectionCount,  Max((total_cases/population))*100 as PercentPopulationInfected
 From PorfolioProject..CovidDeaths
 --Where location like '%poland%'
 Group by Location, Population
 order by PercentPopulationInfected desc
 
+  
 
 -- 4.
 
+  
 
 Select Location, Population,date, MAX(total_cases) as HighestInfectionCount,  Max((total_cases/population))*100 as PercentPopulationInfected
 From PorfolioProject..CovidDeaths
